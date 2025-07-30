@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import 'primeicons/primeicons.css';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
@@ -61,10 +61,10 @@ export default function UserCard() {
       const newItems = data.filter((item) => !fetched.find((u) => u.id === item.id));
       fetched = [...fetched, ...newItems];
       currentPage++;
-      if (data.length === 0) break; // stop if no more data
+      if (data.length === 0) break; 
     }
 
-    setAllFetchedUsers(fetched); // update global if needed
+    setAllFetchedUsers(fetched);
     const selected = fetched.slice(0, selectCount);
     setSelectedUsers(selected);
   };
@@ -100,6 +100,7 @@ export default function UserCard() {
         loading={loading}
         first={first}
         onPage={onPage}
+        selectionMode="multiple"
         
       >
         <Column selectionMode="multiple" headerStyle={{ width: '1rem' }} />
